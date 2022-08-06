@@ -53,7 +53,7 @@ describe('Login',() => {
        const launchedUrl = await browser.getUrl();
        expect(launchedUrl, 'Correct url is not launched when we open a webpage').to.equal(launchUrl)
     })
-    it.only('Misc functions from browser', async() => {
+    it('Misc functions from browser', async() => {
         const launchUrl = 'https://www.facebook.com'
         await browser.url(launchUrl);
 
@@ -96,8 +96,15 @@ describe('Login',() => {
         1. re launch the url
         2. back() then forward()
         */
-       
+
         await browser.pause(700)
+    })
+    it.only('Verify login contains log in in title', async() =>{
+        const launchUrl = 'https://www.facebook.com'
+        await browser.url(launchUrl);
+        expectedPageTitle = 'LoG In'.toLowerCase();
+        const pageTitle = await browser.getTitle();
+        expect(pageTitle.toLowerCase(), 'Facebook title is not as expected').to.contains(expectedPageTitle);
     })
 
 })
