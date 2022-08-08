@@ -2,7 +2,7 @@ const sampleTest = require('./sampleTest');
 const { expect, assert } = require('chai');
 
 describe('Login',() => {
-    /*it('Verify user can login with valid credentials',() => {
+    /*it('Verify user can login with valid credentials',() => {f
         const res = sampleTest.addNumbers(2,5);
         expect(res, "addFunction doesn not work as expected").to.equal(7)
 
@@ -66,7 +66,7 @@ describe('Login',() => {
         console.log('\nWindow handle')
         console.log(windowHandle);
         console.log('Window handle\n')
-        await browser.pause(700)
+        await browser.pause(7000)
 
         /*
         to go back in browser 
@@ -74,7 +74,7 @@ describe('Login',() => {
         */
 
         await browser.back();
-        await browser.pause(700)
+        await browser.pause(7000)
 
         /*
         to go forward in browser
@@ -99,7 +99,7 @@ describe('Login',() => {
 
         await browser.pause(700)
     })
-    it.only('Verify login contains log in in title', async() =>{
+    it('Verify login contains log in in title', async() =>{
         const launchUrl = 'https://www.facebook.com'
         await browser.url(launchUrl);
         expectedPageTitle = 'LoG In'.toLowerCase();
