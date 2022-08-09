@@ -1,4 +1,4 @@
-const sampleTest = require('./sampleTest');
+const sampleTest = require('../sampleTest');
 const { expect, assert } = require('chai');
 
 describe('Login',() => {
