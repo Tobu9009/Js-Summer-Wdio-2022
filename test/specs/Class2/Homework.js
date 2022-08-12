@@ -37,7 +37,7 @@ describe('Verify darksky and facebook', () =>{
         const lowTempNumber = parseInt(lowTempValue.substring(0,2));
         const highTempValue = await $('span[class="high-temp-text"]').getText();
         const highTempNumber = parseInt(highTempValue.substring(0,2));
-        expect(feelsLikeNumber,'feelsLikeTempValueTextOnly lowTempValue').to.be.gt(lowTempNumber).and.to.be.lt(highTempNumber)
+        expect(feelsLikeNumber,'feelsLikeTemp is not between lowTempValue and highTempValue').to.be.gt(lowTempNumber).and.to.be.lt(highTempNumber)
     })
     it('Verify user can get temperature based on zipcode',async() => {
         await browser.url('https://www.darksky.net/')
