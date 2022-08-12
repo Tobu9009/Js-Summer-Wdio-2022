@@ -44,9 +44,8 @@ describe('Verify darksky and facebook', () =>{
         const inputBox = await $('input[type="text"]');
         await inputBox.setValue('12222')
         await browser.pause(4000)
-        const button = await $('a[class="searchButton"')
+        await $('a[class="searchButton"').click();
         await browser.pause(4000)
-        await button.click();
         await browser.pause(4000)
     })
     it('Verify that user gets error message after submitting an empty login form', async() =>{
