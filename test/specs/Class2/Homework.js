@@ -46,7 +46,6 @@ describe('Verify darksky and facebook', () =>{
         await browser.pause(4000)
         await $('a[class="searchButton"').click();
         await browser.pause(4000)
-        await browser.pause(4000)
     })
     it('Verify that user gets error message after submitting an empty login form', async() =>{
         await browser.url('https://facebook.com/')
