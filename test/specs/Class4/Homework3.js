@@ -23,19 +23,19 @@
  const { expect} = require("chai");
  
  describe('Homework 3', () => {
-    it('Get all the timeline data in an array', async () => {
+    it('Print all the timeline data in an array', async () => {
         await browser.url('https://www.darksky.net/');
         await browser.pause(2000)
         let timelineArray = []
         let count=0;
         let timeline =  await $$('//div[@class="hours"]//span[contains(text(), "am") or contains(text(), "pm")]')
-        for (const completedTimeline of timeline){
-            timelineArray[count] = await completedTimeline.getText()
+        for (const time of timeline){
+            timelineArray[count] = await time.getText()
             count++;
         }
         console.log(`\n\n\nARRAY HERE:\n\n${timelineArray}\n\n\n`);
     });
-    it('Verify destination and check-in/ and check-out dates are as user selected', async () => {
+    it('Verify destination and check-in/check-out dates are as user selected', async () => {
         // 1. Launch hotels.com
         await browser.url('https://www.hotels.com/');
         // 2. Type "man" in destination
