@@ -1,3 +1,4 @@
+//run this using npx wdio run ./wdio.conf.js --spec ./test/specs/Class2/Homework.js
 /*
 Due date: aug 16th end of the day
 
@@ -38,6 +39,14 @@ describe('Verify darksky and facebook', () =>{
         const highTempNumber = parseInt(highTempValue.substring(0,2));
         expect(feelsLikeNumber,'feelsLikeTemp is not between lowTempValue and highTempValue').to.be.gt(lowTempNumber).and.to.be.lt(highTempNumber)
     })
+    it('Verify feelsLikeTemValue is between lowTemValue and highTempValue', async() => {
+        await browser.url('https://www.darksky.net');
+        await browser.pause(3000);
+        const feelsLikeValue = await $('.feels-like-text').getText();
+        const lowTempValue = await $('.low-temp-text').getText();
+        const highTempValue = await $('.high-temp-text').getText();
+        expect((feelsLikeValue < highTempValue && feelsLikeValue > lowTempValue), 'Feels Like is Not in between Low and High Temperature').to.be.true;
+    });
     it('Verify user can get temperature based on zipcode',async() => {
         await browser.url('https://www.darksky.net/')
         const inputBox = await $('input[type="text"]');
@@ -49,8 +58,10 @@ describe('Verify darksky and facebook', () =>{
     it('Verify that user gets error message after submitting an empty login form', async() =>{
         await browser.url('https://facebook.com/')
         await $('button[data-testid="royal_login_button"]').click()
+        await browser.pause(3000)
         const errorMessage = await $('div[class="_9ay7"]').isDisplayed();
         expect(errorMessage, "error message unavailable").to.be.true;
+        await browser.pause(3000)
     })
     it('Verify multiple Steps', async() => {
         //1. Click Messenger link
