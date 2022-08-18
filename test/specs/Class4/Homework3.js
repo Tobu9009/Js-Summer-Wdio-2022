@@ -33,7 +33,7 @@
             timelineArray[count] = await completedTimeline.getText()
             count++;
         }
-        console.log(`\nARRAY HERE:\n${timelineArray}`);
+        console.log(`\n\n\nARRAY HERE:\n\n${timelineArray}\n\n\n`);
     });
     it('Verify destination and check-in/ and check-out dates are as user selected', async () => {
         // 1. Launch hotels.com
