@@ -172,7 +172,7 @@ Direct xpath (simple xpath)
     //tagName[starts-with(@attrName, "attr v") and not (@attrName1)]
     Find the tag(tagName) in dom, where attribute(attrName) value starts with "attr v" and does NOT have attrName1-attribute
 
-    //*[starts-with(@attrName, "attr v") nad not (@attrName1)]
+    //*[starts-with(@attrName, "attr v") and not (@attrName1)]
     Find any tag in dom, where attribute(attrName) value starts with "attr v" and does NOT have attrName1-attribute
 
     //*[@attrName="attr value"]

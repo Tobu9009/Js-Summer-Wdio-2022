@@ -20,9 +20,9 @@
  * 8. Verify check-out date in sep 5
  * 
  */
- const { expect} = require("chai");
+ const {expect} = require("chai");
  
- describe('Homework 3', () => {
+ describe('Homework_3', () => {
     it('Print all the timeline data in an array', async () => {
         await browser.url('https://www.darksky.net/');
         await browser.pause(2000)
@@ -35,7 +35,7 @@
         }
         console.log(`\n\n\nARRAY HERE:\n\n${timelineArray}\n\n\n`);
     });
-    it('Verify destination and check-in/check-out dates are as user selected', async () => {
+    it.only('Verify destination and check-in/check-out dates are as user selected', async () => {
         // 1. Launch hotels.com
         await browser.url('https://www.hotels.com/');
         // 2. Type "man" in destination
@@ -76,14 +76,20 @@
         await $('//button[@id="submit_button"]').click()
         await browser.pause(1000);
         //  6. Verify destination has Manila
-        //* 7. Verify check-in date in Aug-20 
-        //* 8. Verify check-out date in sep 5
         //let targetCountry = await $('//section[@class = "toolbar-region pwa-toolbar__row search-results-toolbar"]').getText() && "aug".toLowerCase() && "20" && "sep".toLowerCase() && "5")
         let targetCountry = await $('//button[contains(@aria-label, "Going to")]').getText()
+        let targetCountryDisplayed = await $('//button[contains(@aria-label, "Going to")]').isDisplayed();
         expect(targetCountry.toLowerCase(), "Does not contain Manila").to.contain("maNILA".toLowerCase())
+        expect(targetCountryDisplayed, "target country is not displayed").to.be.true;
+        //* 7. Verify check-in date in Aug-20 
         let targetCheckIn = await $('//button[contains(@aria-label, "Check-in")]').getText()
+        let checkInDisplayed = await $('//button[contains(@aria-label, "Check-in")]').isDisplayed();
         expect(targetCheckIn.toLowerCase(), "Is not Aug 20").to.be.equal("aug 20".toLowerCase())
+        expect(checkInDisplayed, "target check in  is not displayed").to.be.true;
+        //* 8. Verify check-out date in sep 5
         let targetCheckOut = await $('//button[contains(@aria-label, "Check-out")]').getText()
+        let checkOutDisplayed = await $('//button[contains(@aria-label, "Check-out")]').isDisplayed()
         expect(targetCheckOut.toLowerCase(), "Is not Sep 5").to.be.equal("sep 5".toLowerCase())
+        expect(checkOutDisplayed, "target check out is not displated").to.be.true;
     });
 });
