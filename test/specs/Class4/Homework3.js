@@ -20,9 +20,9 @@
  * 8. Verify check-out date in sep 5
  * 
  */
- const { expect, assert } = require("chai");
+ const { expect} = require("chai");
  
- describe('Homework #3', () => {
+ describe('Homework 3', () => {
     it('Get all the timeline data in an array', async () => {
         await browser.url('https://www.darksky.net/');
         await browser.pause(2000)
@@ -33,9 +33,9 @@
             timelineArray[count] = await completedTimeline.getText()
             count++;
         }
-        console.log(timelineArray);
+        console.log(`\nARRAY HERE:\n${timelineArray}`);
     });
-    it.only('Verify destination and check-in/ and check-out dates are as user selected', async () => {
+    it('Verify destination and check-in/ and check-out dates are as user selected', async () => {
         // 1. Launch hotels.com
         await browser.url('https://www.hotels.com/');
         // 2. Type "man" in destination
@@ -69,16 +69,21 @@
                 break;
             }
         }
-        await browser.pause(2000);
+        await browser.pause(1000);
         // 5. Click Search Button
         await $('//button[@data-stid = "apply-date-picker"]').click()
-        await browser.pause(2000)
+        await browser.pause(1000)
         await $('//button[@id="submit_button"]').click()
-        await browser.pause(2000);
+        await browser.pause(1000);
         //  6. Verify destination has Manila
-        await browser.pause(2000)
-        let Manila = await $('//section[@class = "toolbar-region pwa-toolbar__row search-results-toolbar"]').getText()
-        expect(Manila.toLowerCase(), "This does not contain Manila").to.contain("mAnILa".toLowerCase() && "aug".toLowerCase() && "20" && "sep".toLowerCase() && "5")
-        //  7. Verify check-in date in Aug-20
+        //* 7. Verify check-in date in Aug-20 
+        //* 8. Verify check-out date in sep 5
+        //let targetCountry = await $('//section[@class = "toolbar-region pwa-toolbar__row search-results-toolbar"]').getText() && "aug".toLowerCase() && "20" && "sep".toLowerCase() && "5")
+        let targetCountry = await $('//button[contains(@aria-label, "Going to")]').getText()
+        expect(targetCountry.toLowerCase(), "Does not contain Manila").to.contain("maNILA".toLowerCase())
+        let targetCheckIn = await $('//button[contains(@aria-label, "Check-in")]').getText()
+        expect(targetCheckIn.toLowerCase(), "Is not Aug 20").to.be.equal("aug 20".toLowerCase())
+        let targetCheckOut = await $('//button[contains(@aria-label, "Check-out")]').getText()
+        expect(targetCheckOut.toLowerCase(), "Is not Sep 5").to.be.equal("sep 5".toLowerCase())
     });
 });
