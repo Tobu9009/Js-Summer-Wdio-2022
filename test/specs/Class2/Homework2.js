@@ -27,6 +27,20 @@ https://www.facebook.com
 7. Click 'Keep me signed in 
 8. Verify 'Keep me signed in' is selected
 */
+
+/**
+ * verify destination and check-in/ and check-out dates are as user selected
+ * 
+ * 1. Launch hotels.com
+ * 2. Type "man" in destination 
+ * 3. Select "Manila" from auto-suggestion 
+ * 4. Select sep 10 to sep-25 as check-in and check-out respectively 
+ * 5. Click search button 
+ * 6. verify destination has manila 
+ * 7. Verify check-in date in sep 10 
+ * 8. Verify check-out date in sep 25
+ * 
+ */
 const {expect} = require("chai");
 describe('Verify darksky and facebook', () =>{
     it('verify feelsLikeTempValue is between lowTempValue and highTempValue', async() =>{
