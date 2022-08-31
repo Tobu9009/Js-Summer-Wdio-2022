@@ -46,6 +46,7 @@ describe('Verify darksky and facebook', () =>{
     it('verify feelsLikeTempValue is between lowTempValue and highTempValue', async() =>{
         await browser.url('https://www.darksky.net/')
         const feelsLikeTempValue = await $('span[class="feels-like-text"]').getText()
+        console.log(feelsLikeTempValue);
         const feelsLikeNumber = parseInt(feelsLikeTempValue.substring(0,2));
         const lowTempValue = await $('span[class="low-temp-text"]').getText();
         const lowTempNumber = parseInt(lowTempValue.substring(0,2));
