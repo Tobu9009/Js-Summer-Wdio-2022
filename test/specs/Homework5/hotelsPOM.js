@@ -1,5 +1,5 @@
 const moment = require('moment');
-const CommandsHw = require('./CommandsHw');
+const CommandsHw = require('../../../../Js-Summer-Cucumber-2022/Homework6/Pages/CommandsHw');
 /*
 tc-1
 hotels.com
@@ -17,7 +17,6 @@ Verify destination and check in and check out dates are as user selected
 7.Verify destination has manila
 8.Verify check-in date as tomorrow's date
 9. Verify check-out date in 5 days from tomorrow's date 
-
 */
 
 const now = moment();
